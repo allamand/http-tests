@@ -8,6 +8,10 @@ You define your tests using a describing format split in 3 parts :
 - The Request HTTP in plain text
 - The elements you want the script to check in the Response.
 
+[![](https://images.microbadger.com/badges/version/sebmoule/http-tests.svg)](http://microbadger.com/images/sebmoule/http-tests "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/image/sebmoule/http-tests.svg)](http://microbadger.com/images/sebmoule/http-tests "Get your own image badge on microbadger.com")
+
+[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/sebmoule/http-tests/) [![Docker Pulls](https://img.shields.io/docker/pulls/sebmoule/http-tests.svg?maxAge=2592000)]() [![Docker Stars](https://img.shields.io/docker/stars/sebmoule/http-tests.svg?maxAge=2592000)]()
+
 
 ## How to uses
 

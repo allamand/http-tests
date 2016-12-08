@@ -17,4 +17,4 @@ LABEL org.label-schema.docker.dockerfile="/Dockerfile" \
       org.label-schema.license="MIT" \
       org.label-schema.name="HTTP Test" \
       org.label-schema.vcs-type="Git" \
-      org.label-schema.vcs-url="https://github.com/allamand/test-http"
+      org.label-schema.vcs-url="https://github.com/allamand/http-tests"
