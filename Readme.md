@@ -20,7 +20,7 @@ By default, test-http will try to execute ALL tests `xxx.conf` in ALL `conf/*` d
 test-http is shipped with a DEMO tests which is stored inside `/tests/conf/DEMO` and named `test_001_google.conf`, which makes some requests to google
 
 ```
-$ docker run -rm sebmoule/http-tests
+$ docker run --rm sebmoule/http-tests
 ...
 ...
 You're executing : /test/tests/test_http.sh -d ALL -t ALL
