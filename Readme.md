@@ -136,7 +136,6 @@ The default TAG file is `/tests/tags/TAGS_FILE_DEV`. The `DEV` part is the defau
 ex of tags:
 ```
 $ cat tags/TAGS_FILE_DEV
-
 <MAVAR>=TEST
 <SERVER>=www.google.fr
 ```
@@ -144,7 +143,7 @@ $ cat tags/TAGS_FILE_DEV
 ex of usage in the .conf file :
 
 ```
-##URLTEST=https://<SERVER>                                                                                                                                                                                                                  
+##URLTEST=https://<SERVER>
 GET / HTTP/1.1
 User-Agent: curl/7.35.0
 Host: <SERVER>
