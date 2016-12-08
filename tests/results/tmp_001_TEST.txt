@@ -1,0 +1,16 @@
+[32mValidation ==> New HostPort : https://www.google.fr[m
+[32mValidation in [conf/TEST/test_001_google.conf][m
+[36mStep 1:1  Validation :  Call on OFR Netflix in RP to retrieve ApiToken (method="GET")-->[m
+Validation Test : [ [32m OK [m  ] HTTP/1.1 200 OK
+[32m	Result Step 1:1  Validation :  200 OK + Token [[1mOK[22m] (0 ms)[m
+[32mValidation ==> New HostPort : https://www.google.fr:443[m
+[32mValidation in [conf/TEST/test_001_google.conf][m
+[36mStep 2:1  Validation :  Call on OFR Netflix in RP to retrieve ApiToken (method="GET")-->[m
+Validation Test : [ [32m OK [m  ] HTTP/1.1 200 OK
+[32m	Result Step 2:1  Validation :  200 OK + Token [[1mOK[22m] (-1 ms)[m
+[32mValidation ==> New HostPort : http://www.google.fr[m
+[32mValidation in [conf/TEST/test_001_google.conf][m
+[36mStep 3:1  Validation :  Call on OFR Netflix in RP to retrieve ApiToken (method="GET")-->[m
+Validation Test : [ [32m OK [m  ] HTTP/1.1 200 OK
+[32m	Result Step 3:1  Validation :  200 OK + Token [[1mOK[22m] (0 ms)[m
+[36mValidation ==> Total -1 ms[m

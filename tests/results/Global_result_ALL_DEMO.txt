@@ -1,0 +1,11 @@
+[32mYou're executing : /home/sallamand/work/sebmoule/test/tests/test_http.sh -d ALL -t ALL[m
+[36mworking on test : ALL in directory DEMO from  DEMO TEST[m
+[36m=> DEMO conf/DEMO/test_001_google.conf[m [32m OK [m ()
+[32m	Result Step 1:1  Validation :  200 OK + Token [[1mOK[22m] (-1 ms)[m
+[32m	Result Step 2:1  Validation :  200 OK + Token [[1mOK[22m] (0 ms)[m
+[32m	Result Step 3:1  Validation :  301 on www.google.fr [[1mOK[22m] (0 ms)[m
+[32m	Result Step 4:1  Validation :  200 OK  [[1mOK[22m] (0 ms)[m
+[36mworking on test : ALL in directory TEST from  DEMO TEST[m
+DEMO : Nb test : 0\t Nb Check OK: 0\t Nb Checks KO : 0
+TEST : Nb test : 0\t Nb Check OK: 0\t Nb Checks KO : 0
+[32mNumber of request tested 0 	 Nb Check OK: 0	 Nb Checks KO : 0:[m
