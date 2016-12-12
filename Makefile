@@ -2,8 +2,11 @@
 build:
 	docker build -t sebmoule/http-tests .
 
-run-ash:
+run-bash:
 	docker run -ti --rm --entrypoint bash sebmoule/http-tests
+
+run-ash:
+	docker run -ti --rm --entrypoint ash sebmoule/http-tests
 
 run:
 	docker run -ti --rm sebmoule/http-tests

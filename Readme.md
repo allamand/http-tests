@@ -223,3 +223,9 @@ HTTP/1.1 200 OK
 - So, when calling in the Next Step, `<STEP1_host>` it will be the value `www.google.fr`
 - So, when calling in the Next Step, `<STEP1_uri>` it will be the value `/`
 
+
+## Alternatives
+
+You can Use Jmeter, Robot Framework
+
+This tools may also be useful : https://github.com/lifeforms/httpcheck
