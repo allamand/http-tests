@@ -199,16 +199,18 @@ if [[ $wtresult -ne 1 ]]; then
     err=1
 fi
 
-
 #if detailed log doesn't exist means that tests isn't running properly, so exit 1
 if [ ! -f tests/results/result_${TEST_NAME}/${D}/detailed.log ]
 then
     err=1
 fi
 
-
-
-
+if [[ err -eq 1 ]]; then
+    echo "Some tests are in error"
+    echo "we will pout detailed logs"
+    sleep 5
+    cat tests/results/result_${TEST_NAME}/${D}/detailed.log
+fi
 
 exit $err
 

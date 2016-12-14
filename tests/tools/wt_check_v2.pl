@@ -352,9 +352,11 @@ while  ($l = <IN>)
 		my $elapsed = $t1 - time;
 		
 		if ($success) {
-		    $s .=$VERT."\tResult Step $step_number:$x  Validation : $Test_Expected [".$BOLD."OK".$NO_BOLD."] ($elapsed ms)".$NORMAL."\n";  }
+#		    $s .=$VERT."\tResult Step $step_number:$x  Validation : $Test_Expected [".$BOLD."OK".$NO_BOLD."] ($elapsed ms)".$NORMAL."\n";  }
+		    $s .=$VERT."\tResult Step $step_number:$x  Validation : $Test_Description [".$BOLD."OK".$NO_BOLD."] ($elapsed ms)".$NORMAL."\n";  }
 		else {
-		    $s .=$ROUGE."\tResult Step $step_number:$x  Validation : $Test_Expected [".$BOLD."KO".$NO_BOLD."] ($elapsed ms)".$NORMAL."\n";  }
+#		    $s .=$ROUGE."\tResult Step $step_number:$x  Validation : $Test_Expected [".$BOLD."KO".$NO_BOLD."] ($elapsed ms)".$NORMAL."\n";  }
+		    $s .=$ROUGE."\tResult Step $step_number:$x  Validation : $Test_Description [".$BOLD."KO".$NO_BOLD."] ($elapsed ms)".$NORMAL."\n";  }
 		
 		#passage au step suivant
 		$step_number++;
@@ -542,6 +544,7 @@ sub SendRecvNetHttp {
 	}else{
 	    $full = "https://".$ip.':'.$port.$url;
 	}
+	$ua->ssl_opts(verify_hostname => 0, SSL_verify_mode => 0x00);
     } else {
 	$full = "http://".$ip.':'.$port.$url;
     }

@@ -1,0 +1,45 @@
+FROM ubuntu
+
+
+RUN apt-get update && apt-get install -y perl libxml2 openssl expat bash \
+
+    #install this to compile cpan XML library
+    && apt-get install -y \ 
+       g++ make libxml2-dev zlib1g-dev libxml-libxml-perl \
+       liblwp-useragent-perl \
+#perl-dev libxml2-dev openssl-dev expat-dev \
+
+
+
+    && echo "tempo"
+RUN echo "next" \
+
+    #install cpan then cleanup
+#    && cpan install LWP::UserAgent Net::HTTPS IO::Socket::SSL LWP::Protocol::http10 LWP::Protocol::https XML::LibXML \
+#    && cpan install LWP::UserAgent Net::HTTPS IO::Socket::SSL LWP::Protocol::http10 LWP::Protocol::https XML::LibXML \
+    && rm -rf $HOME/.cpan/build/* \
+       $HOME/.cpan/sources/authors/id \
+       $HOME/.cpan/cpan_sqlite_log.* \
+       /tmp/cpan_install_*.txt \
+
+    #cleanup unneed packages
+    && echo 'Cleaning up' \
+    && apt-get clean -qq -y \
+    && apt-get autoclean -qq -y \
+    && apt-get autoremove -qq -y \
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /tmp/* 
+
+COPY aliases.sh /etc/profile.d/aliases.sh
+COPY . /test/
+
+WORKDIR /test/
+ENTRYPOINT  ["./entrypoint.sh"]
+CMD ["test"]
+
+
+LABEL org.label-schema.docker.dockerfile="/Dockerfile" \
+      org.label-schema.license="MIT" \
+      org.label-schema.name="HTTP Test" \
+      org.label-schema.vcs-type="Git" \
+      org.label-schema.vcs-url="https://github.com/allamand/http-tests"

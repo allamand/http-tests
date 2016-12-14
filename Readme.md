@@ -13,7 +13,24 @@ You define your tests using a describing format split in 3 parts :
 [![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/sebmoule/http-tests/) [![Docker Pulls](https://img.shields.io/docker/pulls/sebmoule/http-tests.svg?maxAge=2592000)]() [![Docker Stars](https://img.shields.io/docker/stars/sebmoule/http-tests.svg?maxAge=2592000)]()
 
 
-## How to uses
+
+## Embedded tests
+
+You can derive from this Imge to emmbeded your specific app tests in an autonom docker, (useful if you want to launch tests on a swarm cluster)
+
+Exemple of Dockerfile :
+
+```
+FROM sebmoule/http-tests
+
+ADD test/ /test/conf/TEST/
+```
+
+This will copy your test directory inside a new image specific.
+
+
+
+## How to write tests
 
 To ease the usage the test-http tool is embedded in a docker.
 
@@ -42,7 +59,10 @@ This as Executed the demo test which is composed of 4 Steps, and it output the r
 
 ### View the Details of execution
 
-You can either mount the result directory locally or inspect the container to see details logs :
+In case of Errors in your tests, the Detailed log execution will be print at the end of the test execution.
+
+
+But You can either mount the result directory locally or inspect the container to see details logs :
 
 ```
 $ docker run --rm -v /tmp/results:/test/tests/results sebmoule/http-tests

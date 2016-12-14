@@ -2,6 +2,9 @@
 build:
 	docker build -t sebmoule/http-tests .
 
+build-ubuntu:
+	docker build -f Dockerfile.ubuntu -t sebmoule/http-tests:ubuntu .
+
 run-bash:
 	docker run -ti --rm --entrypoint bash sebmoule/http-tests
 
