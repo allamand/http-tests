@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y perl libxml2 openssl expat bash \
     #install this to compile cpan XML library
     && apt-get install -y \ 
        g++ make libxml2-dev zlib1g-dev libxml-libxml-perl \
-       liblwp-useragent-perl \
+#       liblwp-useragent-perl \
 #perl-dev libxml2-dev openssl-dev expat-dev \
 
 

@@ -208,8 +208,29 @@ fi
 if [[ err -eq 1 ]]; then
     echo "Some tests are in error"
     echo "we will pout detailed logs"
-    sleep 5
+    sleep 1
     cat tests/results/result_${TEST_NAME}/${D}/detailed.log
+
+    #On remet une 2eme fois le resume a la fin dans ce cas
+    cat $GLOBAL_RESULT
+    
+    
+    # Check Test Status
+    NBTOT=0
+    NBTOT_OK=0
+    NBTOT_KO=0
+    for D in $DIR_TEST
+    do
+	NB=`grep 'request =' tests/results/result_${TEST_NAME}/${D}/detailed.log | wc -l`
+	NBTOT=$((NBTOT+NB))
+	NB_OK=`grep '32m OK ' tests/results/result_${TEST_NAME}/${D}/detailed.log | wc -l`
+	NBTOT_OK=$((NBTOT_OK+NB_OK))
+	NB_KO=`grep '31m ERROR ' tests/results/result_${TEST_NAME}/${D}/detailed.log | wc -l`
+	NBTOT_KO=$((NBTOT_KO+NB_KO))
+	echo -e "$D : Nb test : $NB\t Nb Check OK: $NB_OK\t Nb Checks KO : $NB_KO" . "Detailed Test log : results/result_${TEST_NAME}/${D}/detailed.log" | tee -a $GLOBAL_RESULT  
+    done
+    echo -e $G"Number of request tested $NBTOT \t Nb Check OK: $NBTOT_OK\t Nb Checks KO : $NBTOT_KO:"$N | tee -a $GLOBAL_RESULT
+    
 fi
 
 exit $err

@@ -46,7 +46,7 @@ my $print_conf=0;     # 1: prints the request
 my $print_response=1;    # 1: prints the entire response from server affiche header HTTP de reponse
 my $print_extra_fields=1; # 1: prints fields not expected, but present in the response
 my $show_only_failed=0;	 # 1: only print failed tests
-my $debug=0;	 # 1: only print failed tests
+my $debug=(exists ($ENV{"DEBUG"}) ? $ENV{DEBUG} : 0);	 # 1: only print failed tests
 my $debug2=0;
 my $reecriture=1;  # permet de reecrire la reponse pour remplacer les car non ascii par des ?
 my %tags;
@@ -171,15 +171,22 @@ while  ($l = <IN>)
     
     $line_number++;
     chomp $l;
-    
+
+    #print "--$l\n" if $debug;
     
     #First we apply specific TAGS on each CONF Line (tags can be in request or in checks)
     #Rejeu d'informations sauvegardes dans les steps precedents
-    $l =~ s/<STEP([0-9]*)_([^>]*)>/$test_datas->{$1}->{$2}/g;
-    if ($debug && $1) {
+    if ($l =~ s/<STEP([0-9]*)_([^>]*)>/$test_datas->{$1}->{$2}/g) {
 	print "Dynamic TAG updated :  Step:'$1' elem:'$2' value:'$test_datas->{$1}->{$2}'\n";
     }
     
+    
+    ##Then we try to replace any Env marquers with their associated ENV var
+    ##{{$XXX}} with env var XXX
+    if ($l =~ s/\{\{([^}]*)\}\}/$ENV{$1}/g){
+	print "Dynamic Marquer updated with ENV:  '$1' value:'ENV{$1}'=$ENV{$1}\n";
+    }
+
 #		print "line before $l\n";
     # Then We apply classics tags
     foreach(keys(%tags))

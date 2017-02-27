@@ -36,6 +36,7 @@ To ease the usage the test-http tool is embedded in a docker.
 
 By default, test-http will try to execute ALL tests `xxx.conf` in ALL `conf/*` directories.
 
+
 ### Default Scenario
 
 test-http is shipped with a DEMO tests which is stored inside `/tests/conf/DEMO` and named `test_001_google.conf`, which makes some requests to google
@@ -149,7 +150,40 @@ working on test : 002 in directory DEMO from DEMO
 DEMO : Nb test : 4 Nb Check OK: 7 Nb Checks KO : 0 . Detailed Test log : results/result_002_DEMO/DEMO/detailed.log
 ```
 
-## Using Tag File
+## Using Tag Environment Variable
+
+In your `*.conf` files you can defines dynamics Tags that will be ovverrided by their equivalent Environment variable.
+
+you set the Environment Tag on the form `{{MY_ENV_VAR_TAG}}`
+
+ex of .conf file usage with Tag Environment:
+```
+##URLTEST=https://{{MY_SERVER}}
+#########################################################
+#SN# Step 1
+#DN# GET Web Service Status
+#ED# 200 OK + ServiceID
+GET / HTTP/1.1
+User-Agent: curl/7.35.0
+Host: {{MY_SERVER}}
+Accept: */*
+---
+HTTP/1.1 200 OK
+--------------------
+```
+
+If you have env var `MY_SERVER=www.google.fr` This will produce this request on `https://www.google.fr`
+```
+GET / HTTP/1.1
+User-Agent: curl/7.35.0
+Host: www.google.fr
+Accept: */*
+```
+
+You can also uses Tags in the Verification section (lines below the `---`.
+
+
+## Using Tag File (OLD way)
 
 You can specify Tag file which will contain basic KEY=VALUE items, allowing you to dynamically change your `*.conf` files depending on target.
 
@@ -243,6 +277,10 @@ HTTP/1.1 200 OK
 - So, when calling in the Next Step, `<STEP1_host>` it will be the value `www.google.fr`
 - So, when calling in the Next Step, `<STEP1_uri>` it will be the value `/`
 
+
+## Debuging
+
+You can enable the DEBUG logs of the scripts by adding the `DEBUG=1`  environment variable
 
 ## Alternatives
 
