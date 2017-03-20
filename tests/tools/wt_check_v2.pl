@@ -53,7 +53,7 @@ my %tags;
 my %headers;
 
 my $http_vers = '1.1'; # par defaut HTTP/1.1 sinon HTTP/1.0
-my $is_https = 1 ; #par defaut c'est http
+my $is_https = 0 ; #par defaut c'est http
 my $sign_req = 0 ; #par defaut c'est non
 my $method ='';
 my $is_post =0; # post/patch ou delete
